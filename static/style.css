@@ -1,0 +1,154 @@
+:root {
+  --primary-orange: #f25a17;
+  --support-brown: #5f2112;
+  --support-beige: #f0f2e5;
+  --accent-grey: #2B2D1F;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--support-beige);
+}
+
+/* ----------------------------------------------------------------------
+   -----------------------------MAIN GRID--------------------------------
+   ----------------------------------------------------------------------- */
+
+.page-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  margin: 0;
+  padding: 0;
+}
+
+/* -----------------------------------------------------------------------
+   ---------------------------LAYOUT OF TILES-----------------------------
+   ----------------------------------------------------------------------- */
+
+.tile-full {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  height: 100vh;
+  font-weight: 100;
+  gap: 10px;
+}
+
+.tile-half {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 50vh;
+  gap: 10px;
+}
+
+.product-grid {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* -----------------------------------------------------------------------
+   ---------------------------STYLE OF TILES------------------------------
+   ----------------------------------------------------------------------- */
+
+.tile-theme-light {
+  background-color: var(--support-beige);
+  color: var(--accent-grey);
+  border: solid black 1px;
+}
+
+.tile-theme-dark {
+  background-color: var(--accent-grey);
+  color: var(--support-beige);
+  margin: 0;
+  border: solid red 1px ;
+}
+
+/* -----------------------------------------------------------------------
+   ------------------------STYLE WITHIN TILES-----------------------------
+   ----------------------------------------------------------------------- */
+
+.button-primary {
+  background-color: var(--primary-orange);
+  color: white;
+  padding: 14px 25px;
+  border-radius: 1rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+.button-primary:hover{
+  background-color: var(--primary-orange);
+  box-shadow: 0.5rem 0.2rem 1rem var(--accent-grey);
+}
+
+.button-secondary {
+  background-color: var(--accent-grey);
+  color: white;
+  padding: 14px 25px;
+  border-radius: 1rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+
+}
+
+.section-title {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: 2.5rem;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  font-weight: normal;
+}
+
+.grid-container {
+  grid-column: 1/1;
+  grid-row: 2/2;
+}
+.grid-section {
+  display: flex;
+  align-items: center; 
+}
+
+#thing-on-top {
+  display: flex;
+  justify-content: space-between;
+} 
+
+
+#main-header {
+  margin-left: 3rem;
+  width: 25rem;
+  font-size: 150%;
+  line-height: 1.1;
+}
+
+#quote {
+  margin-right: 3rem;
+  font-size: 300%;
+  font-style: italic;
+  line-height: 1.1;
+}
+#main-subheader {
+  align-content: top;
+  margin-left: 3rem;
+}
+#impact-header {
+  align-content: top;
+  text-align: right;
+  margin-right: 3rem;
+}
+
+#product {
+  align-content: center;
+  border: solid blue 100px;
+}
+
