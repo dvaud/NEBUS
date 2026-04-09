@@ -118,11 +118,10 @@ body {
   align-items: center; 
 }
 
-#thing-on-top {
+#menubar {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 } 
-
 
 #main-header {
   margin-left: 3rem;
@@ -137,6 +136,11 @@ body {
   font-style: italic;
   line-height: 1.1;
 }
+#main-image {
+  grid-column: 2;
+  grid-row: 1/3;
+}
+
 #main-subheader {
   align-content: top;
   margin-left: 3rem;
