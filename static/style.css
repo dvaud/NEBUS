@@ -174,4 +174,31 @@ body {
   text-align: center;
   cursor: pointer;
   padding: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box; 
+}
+
+#logo svg {
+  max-width: 100%;
+  max-height: 3rem; 
+}
+
+.svg-default {
+  display: block;
+}
+
+.svg-hover {
+  display: none;
+  overflow: visible;
+}
+
+#logo:hover .svg-default {
+  display: none;
+}
+
+#logo:hover .svg-hover {
+  display: block;
+  align-items: left;
 }
