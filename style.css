@@ -1,3 +1,23 @@
+/* WELCOME TO THE BEAUTIFUL STYLESHEET. I WILL ASSUME THAT YOU READ MY SHORT NOVEL IN THE HTML ALREADY.
+
+THIS IS SOME CSS SPECIFIC INFO TO KEEP IN MIND. PLEASE KEEP IT IN MIND.
+
+AAAALWAYS USE VARIABLE COLOURS WHEN YOU WANT TO MAKE SOMETHING SERIOUS AND NOT JUST FOR TESTING PURPOSES. ALL THE PICK UP CLUB COLOURS CAN BE FOUND BELOW.
+IF YOU WANT TO USE ONE OF THE COLOURS, INSTEAD OF WRITING color: orange; WRITE color: var(--primary-orange);
+
+TRY NOT TO CHANGE TOO MUCH OF WHATS ALREADY WRITTEN, ONLY IF YOU FULLY UNDERSTAND WHAT THE CHANGE EFFECTS. IT IS SAFER TO ADD NEW THINGS THAN REPLACING OLD ONES.
+
+I AM ALSO BAD AT THIS BUT TRY TO ORGANISE WHAT GOES WHERE.
+
+GET SOMEWHAT FAMILIAR WITH USING rem, fr, vw, vh INSTEAD OF px AS A UNIT OF MEASUREMENT, THEY ARE MORE FLEXIBLE ON DIFFERENT SCREEN SIZES.
+
+https://css-tricks.com/ IS A GOOD PLACE TO READ ABOUT CSS
+
+IF YOU FULLY COPY PASTE SOMETHING PLEASE PLEASE PUT IT SEPARATE LIKE I DID WITH THE CARD STACKING THING, I DON'T WANT THESE THINGS TO MIX UP.
+
+I WILL PROBABLY REMEMBER MORE THINGS AS WE GO, I WILL UPDATE THIS LIST.
+
+*/
 :root {
   --primary-orange: #f25a17;
   --support-brown: #5f2112;
@@ -406,7 +426,26 @@ body {
   animation: straighten-img-7 calc(var(--duration) * 2) forwards;
   animation-timing-function: var(--img-easing);
 }
-
+.card:has(~input:nth-of-type(8):checked) > .card-img,
+.cards input:nth-of-type(8):checked + .card ~ .card > .card-img{
+  animation: straighten-img-8 calc(var(--duration) * 2) forwards;
+  animation-timing-function: var(--img-easing);
+}
+.card:has(~input:nth-of-type(9):checked) > .card-img,
+.cards input:nth-of-type(9):checked + .card ~ .card > .card-img{
+  animation: straighten-img-9 calc(var(--duration) * 2) forwards;
+  animation-timing-function: var(--img-easing);
+}
+.card:has(~input:nth-of-type(10):checked) > .card-img,
+.cards input:nth-of-type(10):checked + .card ~ .card > .card-img{
+  animation: straighten-img-10 calc(var(--duration) * 2) forwards;
+  animation-timing-function: var(--img-easing);
+}
+.card:has(~input:nth-of-type(11):checked) > .card-img,
+.cards input:nth-of-type(11):checked + .card ~ .card > .card-img{
+  animation: straighten-img-11 calc(var(--duration) * 2) forwards;
+  animation-timing-function: var(--img-easing);
+}
 @keyframes straighten-img-1 { 50%{ --angle: 0deg;} }
 @keyframes straighten-img-2 { 50%{ --angle: 0deg;} }
 @keyframes straighten-img-3 { 50%{ --angle: 0deg;} }
@@ -414,7 +453,10 @@ body {
 @keyframes straighten-img-5 { 50%{ --angle: 0deg;} }
 @keyframes straighten-img-6 { 50%{ --angle: 0deg;} }
 @keyframes straighten-img-7 { 50%{ --angle: 0deg;} }
-
+@keyframes straighten-img-8 { 50%{ --angle: 0deg;} }
+@keyframes straighten-img-9 { 50%{ --angle: 0deg;} }
+@keyframes straighten-img-10 { 50%{ --angle: 0deg;} }
+@keyframes straighten-img-11 { 50%{ --angle: 0deg;} }
 
 /* stacking order */
 .cards input:checked + .card{
