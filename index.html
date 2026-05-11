@@ -67,6 +67,9 @@
         <div class="menu-item"><p>About Us</p></div>
     </div>
     <main></main>
+
+
+
     <section class="tile-full tile-theme-light">
 
         <div class="grid-section">
@@ -83,13 +86,19 @@
         </div>
 
     </section> 
+
+
+
     <section class="tile-half tile-theme-light">
         <div><img width="90%" height="90%"></div>
         <div id="impact-header">
-            <h1>Our Impact</h1>
-            <p>999 bottles crushed<br>999 cardboard discarded<br>100% electric vehicles<br><br><span style="text-decoration: underline;">Get to know our products »</span></p>
+            <h1>We need to stop</h1>
+            <p>The increaced methane pollution.<br>The significant green house gas emissions.<br>The growing pressure on landfills.</p>
         </div>
     </section>
+
+
+
     <section class="tile-full tile-theme-dark">
         <h1 class="section-title">Where public service meets <br>everyday life.</h1>
         <div class="product-grid">
@@ -104,6 +113,55 @@
             </article>
         </div>
     </section>
+
+
+
+<section class="tile-full tile-theme-light">
+  <div class="content-group">
+    <h1 class="section-title">Trusted by our partners.</h1>
+    <div class="logo-carousel">
+      <div class="logo-track">
+        <div class="logo-set">
+          <img src="SQUARE.png" alt="placeholder-logo" title="placeholder-logo" class="partner-logo">
+          <img src="SQUARE.png" alt="placeholder-logo" title="placeholder-logo" class="partner-logo">
+          <img src="SQUARE.png" alt="placeholder-logo" title="placeholder-logo" class="partner-logo">
+          <img src="SQUARE.png" alt="placeholder-logo" title="placeholder-logo" class="partner-logo">
+          <img src="SQUARE.png" alt="placeholder-logo" title="placeholder-logo" class="partner-logo">
+          <img src="SQUARE.png" alt="placeholder-logo" title="placeholder-logo" class="partner-logo">
+          <img src="SQUARE.png" alt="placeholder-logo" title="placeholder-logo" class="partner-logo">
+          <img src="SQUARE.png" alt="placeholder-logo" title="placeholder-logo" class="partner-logo">
+        </div>
+        <div class="logo-set">
+          <img src="SQUARE.png" alt="placeholder-logo" title="placeholder-logo" class="partner-logo">
+          <img src="SQUARE.png" alt="placeholder-logo" title="placeholder-logo" class="partner-logo">
+          <img src="SQUARE.png" alt="placeholder-logo" title="placeholder-logo" class="partner-logo">
+          <img src="SQUARE.png" alt="placeholder-logo" title="placeholder-logo" class="partner-logo">
+          <img src="SQUARE.png" alt="placeholder-logo" title="placeholder-logo" class="partner-logo">
+          <img src="SQUARE.png" alt="placeholder-logo" title="placeholder-logo" class="partner-logo">
+          <img src="SQUARE.png" alt="placeholder-logo" title="placeholder-logo" class="partner-logo">
+          <img src="SQUARE.png" alt="placeholder-logo" title="placeholder-logo" class="partner-logo">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+    const track = document.querySelector('.logo-track');
+
+    track.addEventListener('mouseenter', () => {
+        track.getAnimations().forEach(anim => {
+        anim.playbackRate = 0.1; 
+        });
+    });
+
+    track.addEventListener('mouseleave', () => {
+        track.getAnimations().forEach(anim => {
+        anim.playbackRate = 1; 
+        });
+    });
+</script>
 </body>
 
 </html>
