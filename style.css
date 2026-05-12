@@ -307,7 +307,7 @@ body {
   grid-row: 1 / -1; 
 }
 #cards-background-section {
-  background-image: url('backdrop.svg');
+  background-image: url('assets/backdrop.svg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
