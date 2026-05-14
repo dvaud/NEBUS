@@ -252,7 +252,7 @@ h6 {
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  position: relative; /* Required to stack the hover SVG */
+  position: relative;
 }
 
 #logo svg {
@@ -282,7 +282,7 @@ h6 {
 #logo:hover .svg-hover {
   opacity: 1;
   visibility: visible;
-  animation: shake 12s ease 10s infinite;
+  animation: shake 12s ease 5s infinite;
 }
 
 @keyframes shake {
