@@ -524,7 +524,7 @@ body {
 .card-data > .card-num{
   opacity: var(--data-opacity, 0);
   font-size: .8rem;
-  color: #666;
+  color: var(--support-brown);
 }
 .card-data > p{
   font-size: 0.9rem;
@@ -547,14 +547,18 @@ body {
   pointer-events: var(--card-events, none);
   opacity: var(--data-opacity, 0);
   transition: color var(--duration) ease-in-out, background-color var(--duration) ease-in-out;
-  color: var(--label-clr-txt, #000);
-  background-color: var(--label-clr-bg, #EEE);
+  color: var(--support-brown);
+  background-color: var(--support-beige);
   border-radius: 50%;
   width: 32px;
   height: 32px;
   aspect-ratio: 1/1;
   display: grid;
   place-content: center;
+}
+.card-data > footer label:hover {
+  box-shadow: 0.2rem 0.1rem 0.4rem var(--primary-orange);
+  transition: 0.1s;
 }
 
 .cards input:checked:focus-visible + .card > .card-data > footer label,
