@@ -26,6 +26,8 @@ I WILL PROBABLY REMEMBER MORE THINGS AS WE GO, I WILL UPDATE THIS LIST.
 
   --shadow: rgb(from var(--accent-grey) r g b / 30%);
 
+  --font-weight-interact: 700;
+
   --transition: .25s;
 }
 
@@ -33,6 +35,46 @@ body {
   margin: 0;
   padding: 0;
   background-color: var(--support-beige);
+  font-family: "Overpass", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Andada Pro", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+h1 {
+  font-size: 4.5rem;
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 3.5rem;
+  font-weight: 300;
+}
+
+h3 {
+  font-size: 2.5rem;
+  font-weight: 300;
+}
+
+h4 {
+  font-size: 2.0rem;
+  font-weight: 100;
+}
+
+h5 {
+  font-size: 1.5rem;
+  font-weight: 100;
+}
+
+h6 {
+  font-size: 1rem;
+  font-weight: 100;
 }
 
 /* ----------------------------------------------------------------------
@@ -97,43 +139,42 @@ body {
    ------------------------STYLE WITHIN TILES-----------------------------
    ----------------------------------------------------------------------- */
 
-.button-primary {
-  background-color: var(--primary-orange);
+.button-primary,
+.button-secondary {
+  font-family: "Andada Pro", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: 1rem;
+  font-weight: 100;
   color: white;
-  padding: 14px 25px;
+  padding: 1.9rem 2.6rem;
   border-radius: 1rem;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   margin-bottom: 0.5rem;
+  transition: box-shadow var(--transition) ease-in-out, 
+              font-weight var(--transition) ease-in-out;
 }
-.button-primary:hover{
-  box-shadow: 0.2rem 0.2rem .4rem var(--shadow);
-  transition: var(--transition);
+
+.button-primary {
+  background-color: var(--primary-orange);
 }
 
 .button-secondary {
   background-color: var(--accent-grey);
-  color: white;
-  padding: 14px 25px;
-  border-radius: 1rem;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  margin-bottom: 0.5rem;
 }
-.button-secondary:hover{
-  box-shadow: 0.2rem 0.2rem .4rem var(--shadow);
-  transition: var(--transition);
+.button-primary:hover, .button-secondary:hover{
+  box-shadow: 0.2rem 0.2rem 0.4rem var(--shadow);
+  font-weight: var(--font-weight-interact);
 }
+
 
 .section-title {
   grid-column: 1 / -1;
   text-align: center;
-  font-size: 2.5rem;
   margin-top: 4rem;
   margin-bottom: 4rem;
-  font-weight: normal;
 }
 
 .grid-container {
@@ -151,11 +192,16 @@ body {
   text-align: center;
   cursor: pointer;
   padding: 0.7rem;
+  font-weight: 100;
+  transition: background var(--transition) ease-in-out, 
+              box-shadow var(--transition) ease-in-out, 
+              font-weight var(--transition) ease-in-out;
 }
+
 .menu-item:hover {
   background: var(--support-brown);
-  box-shadow: inset 0 0 0 0.1rem var(--primary-orange);
-  transition: var(--transition);
+  box-shadow: inset 0 0 0 .1rem var(--primary-orange);
+  font-weight: var(--font-weight-interact);
 }
 
 #menubar {
@@ -224,7 +270,7 @@ body {
   opacity: 0;
   visibility: hidden;
   overflow: visible;
-  position: absolute; /* Places this exactly over the default SVG */
+  position: absolute;
   transition: opacity .2s ease, visibility .25s ease;
 }
 
@@ -236,6 +282,16 @@ body {
 #logo:hover .svg-hover {
   opacity: 1;
   visibility: visible;
+  animation: shake 12s ease 10s infinite;
+}
+
+@keyframes shake {
+  0% { transform: scale(1); }
+  5% { transform: scale(1.05); }
+  6.66%, 10% { transform: rotate(-5deg) scale(1.05); }
+  8.33% { transform: rotate(5deg) scale(1.05); }
+  11.66% { transform: rotate(0deg) scale(1.05); }
+  16.66%, 100% { transform: scale(1); }
 }
 
 
@@ -317,7 +373,8 @@ body {
 }
 
 .review-card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  box-shadow: .2rem .2rem .4rem var(--shadow);
+  transition: var(--transition) ease-in-out;
 }
 @keyframes review-conveyorbelt {
   0% {
@@ -531,29 +588,44 @@ body {
   z-index: 3;
 }
 
-.card-data{
+.card-data {
   display: grid;
+  grid-template-columns: max-content 1fr;
+  grid-template-rows: max-content max-content 1fr;
+  align-self: stretch;
   gap: 1rem;
 }
-.card-data > .card-num{
+.card-data > .card-num {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: center;
   opacity: var(--data-opacity, 0);
   font-size: .8rem;
   color: var(--support-brown);
 }
-.card-data > p{
-  font-size: 0.9rem;
-}
-.card-data > h2,
-.card-data > p{
+.card-data > h4,
+.card-data > p {
+  grid-column: 1 / -1;
   transition: var(--transition) ease-in-out;
   transition-delay: var(--data-delay, 0ms);
   opacity: var(--data-opacity, 0);
   translate: 0 var(--data-y, 20px);
 }
-.card-data > footer{
+
+.card-data > h4 {
+  grid-row: 2;
+}
+
+.card-data > p {
+  grid-row: 3;
+  font-size: 0.9rem;
+}
+.card-data > footer {
+  grid-column: 2;
+  grid-row: 1;
   display: flex;
-  justify-content: var(--cards-footer-justify);
-  gap: 2rem;
+  justify-content: flex-start;
+  gap: 1rem;
 }
 .card-data > footer label{
   margin-block-start: auto;
