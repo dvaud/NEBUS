@@ -236,10 +236,20 @@ h6 {
   height: 1.25rem;
 }
 
-.menu-item h5 {
+.menu-item a {
+  font-family: "Overpass", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+  text-decoration: none;
   color: var(--support-beige);
   margin: 0;
+  font-size: 1.5rem;
   transition: font-weight var(--transition) ease-in-out;
+}
+.menu-item a:hover {
+  font-weight: 300;
+  transition: var(--transition);
 }
 
 
