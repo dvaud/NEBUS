@@ -22,18 +22,29 @@ I WILL PROBABLY REMEMBER MORE THINGS AS WE GO, I WILL UPDATE THIS LIST.
   --primary-orange: #f25a17;
   --support-brown: #5f2112;
   --support-beige: #f0f2e5;
-  --accent-grey: #2B2D1F;
+  --accent-grey: #2b2d1f;
 
   --shadow: rgb(from var(--accent-grey) r g b / 30%);
 
   --font-weight-interact: 700;
 
   --transition: .25s;
+
+
+
+  /* testing stuff */
+  --bg-colour: #111111;
+  --text-active: #ffffff;
+  --text-inactive: #a0a0a0;
+  --btn-bg: #2a2a2a;
+  --btn-hover: #3a3a3a;
+  --transition-speed: 0.2s;
 }
 
 body {
   margin: 0;
   padding: 0;
+  padding-top: 100px;
   background-color: var(--support-beige);
   font-family: "Overpass", sans-serif;
   font-optical-sizing: auto;
@@ -149,7 +160,7 @@ h6 {
   font-size: 1rem;
   font-weight: 100;
   color: white;
-  padding: 1.9rem 2.6rem;
+  padding: 1.2rem 1.6rem;
   border-radius: 1rem;
   text-align: center;
   text-decoration: none;
@@ -167,7 +178,7 @@ h6 {
   background-color: var(--accent-grey);
 }
 .button-primary:hover, .button-secondary:hover{
-  box-shadow: 0.2rem 0.2rem 0.4rem var(--shadow);
+  box-shadow: 0 0.2rem 0.4rem var(--shadow);
   font-weight: var(--font-weight-interact);
 }
 
@@ -211,120 +222,201 @@ h6 {
   margin-right: 3rem;
 }
 
+/* -----------------------------------------------------------------------
+   ---------------------------- NAVBAR -----------------------------------
+   ----------------------------------------------------------------------- */
 
-
-#menubar {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  position: sticky;
-  top: -2.5rem;
-  height: 7rem;
-  z-index: 999;
-  transition: top var(--transition) ease-in-out;
-}
-#menubar:hover {
+.header {
+  position: fixed;
   top: 0;
-}
-.menu-col {
-  display: block; 
-  transition: background var(--transition) ease-in-out,
-              box-shadow var(--transition) ease-in-out;
-}
-.menu-col::before {
-  content: '';
-  display: block;
-  height: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 100%;
+  padding: 1.5rem 4rem; 
+  background-color: var(--support-beige);
+  z-index: 1000;
+  transition: all var(--transition) ease-in-out;
+  box-sizing: border-box;
 }
 
-.menu-item a {
-  font-family: "Overpass", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 200;
-  font-style: normal;
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+
+.navbar-brand {
+  width: 350px;
+}
+
+.navbar-brand a {
+  display: inline-flex; 
+  align-items: center;
   text-decoration: none;
-  color: var(--support-beige);
+  background-color: var(--accent-grey); 
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  transition: background-color var(--transition) ease-in-out;
+  flex-shrink: 0; 
+}
+
+.navbar-brand a:hover {
+  background-color: var(--primary-orange); 
+}
+
+
+.brand-logo {
+  height: 4rem; 
+  width: 10.4rem;
+  display: block;
+  justify-self: left;
+}
+
+.brand-logo:hover {
+  animation: shake 16s ease 0.7s infinite;
+}
+
+
+.logo-icon {
+  display: none;
+}
+
+
+
+.navbar-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
   margin: 0;
-  font-size: 1.5rem;
-  transition: font-weight var(--transition) ease-in-out;
-}
-.menu-item a:hover {
-  font-weight: 300;
-  transition: var(--transition);
+  padding: 0;
+  justify-self: center; 
 }
 
+.navbar-links a {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  text-decoration: none;
+  color: var(--accent-grey);
+  font-family: "Overpass", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  transition: color var(--transition) ease-in-out, font-weight var(--transition) ease-in-out;
+}
 
-.item-col {
-  background: var(--accent-grey);
-  cursor: pointer;
-}
-.item-col:hover {
-  background: var(--support-brown);
-  box-shadow: inset 0 0 0 .1rem var(--primary-orange);
-}
-.item-col:hover .menu-item h5 {
+.navbar-links a:hover,
+.navbar-links a.active {
+  color: var(--primary-orange);
   font-weight: var(--font-weight-interact);
 }
 
-
-.logo-col {
-  background: var(--primary-orange);
+.chevron {
+  transition: transform var(--transition) ease-in-out;
 }
-#logo, .menu-item {
-  position: sticky;
-  top: 0;
-  height: 4.5rem;
+
+.navbar-links a.active .chevron {
+  transform: rotate(180deg);
+}
+
+
+
+.navbar-cta {
+  width: 350px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
+  justify-content: flex-end;
 }
-#logo {
+
+
+/* Island */
+
+
+.header.island {
+  top: 1.5rem;
+  width: calc(100% - 4rem); 
+  max-width: calc(1200px + 4rem); 
+  padding: 0.8rem 2rem; 
+  border-radius: 9999px;
+  background-image: url(data:image/png;base64,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);  
+  background-color: rgba(43, 45, 31, 0.8);
+  backdrop-filter: blur(0.2rem);
+  fill: var(--support-beige);
+  box-shadow: 0 0.5rem 1.5rem var(--shadow);
+}
+
+.header.island .logo-full {
+  display: none;
+}
+
+.header.island .logo-icon {
+  display: block;
+  height: 27.5px;
+  width: auto;
+}
+
+.header.island .navbar-links a {
   color: var(--support-beige);
-  padding: 0.7rem;
-}
-#logo svg {
-  max-width: 100%;
-  max-height: 3rem;
 }
 
-#logo:hover .svg-default {
-  opacity: 0;
-  visibility: hidden;
-
-}
-#logo:hover .svg-hover {
-  opacity: 1;
-  visibility: visible;
-  cursor: pointer;
-  animation: shake 12s ease 5s infinite;
+.header.island .navbar-links a:hover,
+.header.island .navbar-links a.active {
+  color: var(--primary-orange);
 }
 
-.svg-default {
-  opacity: 1;
-  visibility: visible;
-  transition: opacity .22s ease, visibility .27s ease;
+.header.island .btn-primary {
+  background-color: var(--support-beige);
+  color: var(--accent-grey);
 }
 
-.svg-hover {
-  opacity: 0;
-  visibility: hidden;
-  overflow: visible;
-  position: absolute;
-  transition: opacity .2s ease, visibility .25s ease;
+
+
+.header.island.island-light {
+  background-color: rgba(240, 242, 229, 0.8);
+  background-image: url(data:image/png;base64,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);  
+  backdrop-filter: blur(0.2rem);
 }
+
+.header.island.island-light .logo-icon {
+  display: block;
+  height: 27.5px; 
+  width: auto;
+  fill: var(--accent-grey);
+}
+.header.island.island-light .navbar-brand a {
+  background-color: transparent;
+  transition: var(--transition);
+}
+.header.island .navbar-brand a {
+  background-color: transparent;
+  transition: var(--transition);
+}
+
+.header.island.island-light .navbar-links a {
+  color: var(--accent-grey);
+}
+
+.header.island.island-light .navbar-links a:hover,
+.header.island.island-light .navbar-links a.active {
+  color: var(--primary-orange);
+}
+
+.header.island.island-light .btn-primary {
+  background-color: var(--accent-grey);
+  color: var(--support-beige);
+}
+
+
 
 @keyframes shake {
-  0% { transform: scale(1); }
-  5% { transform: scale(1.05); }
-  6.66%, 10% { transform: rotate(-5deg) scale(1.05); }
-  8.33% { transform: rotate(5deg) scale(1.05); }
-  11.66% { transform: rotate(0deg) scale(1.05); }
-  16.66%, 100% { transform: scale(1); }
+  0% { transform: scale(1) rotate(0deg); }
+  5% { transform: scale(1.05) rotate(0deg); }
+  6.66%, 10% { transform: scale(1.05) rotate(-5deg); }
+  8.33% { transform: scale(1.05) rotate(5deg); }
+  11.66% { transform: scale(1.05) rotate(0deg); }
+  16.66%, 100% { transform: scale(1) rotate(0deg); }
 }
-
-
-
-
 
 /* -----------------------------------------------------------------------
    -------------------------- JOURNEY SECTION ----------------------------
