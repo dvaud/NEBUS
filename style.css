@@ -491,7 +491,7 @@ h6 {
 .review-track {
   display: flex;
   width: max-content;
-  animation: review-conveyorbelt 240s linear infinite;
+  animation: review-conveyorbelt 200s linear infinite;
 }
 
 .review-set {
