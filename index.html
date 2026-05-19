@@ -9,9 +9,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Andada+Pro:ital,wght@0,400..840;1,400..840&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Overpass:ital,wght@0,100..900;1,100..900&family=Sarala:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Andada+Pro:ital,wght@0,400..840;1,400..840&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Overpass:ital,wght@0,100..900;1,100..900&family=Sarala:wght@400;700&display=swap" rel="stylesheet">
-</head>
+    <link href="https://fonts.googleapis.com/css2?family=Andada+Pro:ital,wght@0,400..840;1,400..840&family=Mallanna&family=Overpass:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"></head>
         <!-- BEFORE GETTING STARTED, LET'S REVIEW SOME GUIDELINES FOR A MORE READABLE AND COLLABORATION FRIENDLY EXPERIENCE
 
 
@@ -42,11 +40,12 @@
 
         -->
 <body>
+    <div id="top" style="position: absolute; top: 0;"></div>
     <!-- HEADER, MENUBAR -->
     <header class="header">
         <nav class="navbar">
             <div class="navbar-brand">
-                <a href="/" aria-label="Home">
+                <a href="#top" aria-label="Home">
                     <svg class="brand-logo logo-full" viewBox="0 0 1123 232" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
                         <g transform="matrix(1,0,0,1,-275.339646,-330.85703)">
                             <g>
@@ -98,49 +97,59 @@
                 </a>
             </div>
 
-            <ul class="navbar-links">
-                <li>
-                    <a href="/our_solutions.html" class="active">
+        <ul class="navbar-links">
+            <li>
+                <h5>
+                    <a href="/our_solutions.html" id="top">
                         Our Solutions
-                        <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"></polyline></svg>
+                        <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="18 15 12 9 6 15"></polyline>
+                        </svg>
                     </a>
-                </li>
-                <li>
+                </h5>
+            </li>
+            <li>
+                <h5>
                     <a href="/recycling_help.html">
                         Recycling Help
-                        <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="18 15 12 9 6 15"></polyline>
+                        </svg>
                     </a>
-                </li>
-                <li><a href="/about_us.html">About</a></li>
-            </ul>
+                </h5>
+            </li>
+            <li>
+                <h5>
+                    <a href="/about_us.html">About</a>
+                </h5>
+            </li>
+        </ul>
 
             <div class="navbar-cta">
-                <a href="#" class="button-primary">Get in Contact</a>
+                <h5>
+                    <a href="#" class="button-primary">Get in Contact</a>
+                </h5>
             </div>
         </nav>
     </header>
     <main></main>
 
-
-
     
     <!-- HOME -->
-    <section class="tile-full tile-theme-light">
-    
+    <section class="tile-full tile-theme-light"  id="landing-background-section">
         <div class="grid-section">
             <div id="main-header"><h1>GET YOUR TRASH TOGETHER</h1></div>
         </div>
         <div id="main-subheader">
             <h2>Pick Up Club</h2>
-            <h2>A shared responsibility</h2>
+            <h3>A Shared Responsibility.</h3>
             <a class="button-primary" href="https://www.google.com" target="_blank" title="Contact Us!">JOIN THE CLUB</a>
-            <a class="button-secondary" href="#faq" target="_blank">LEARN MORE</a>
+            <a class="button-secondary" href="#faq">LEARN MORE</a>
         </div>
         <div id="main-image">
-            <img src="assets/img.jpg" height="90%" style="border-radius: 20px;">
+            <img src="assets/picture.jpg" alt="Aerial view of a lake and park" class="hero-image">
         </div>
-
-    </section> 
+    </section>
 
 
     <!-- RISKS! THE SMALL SECTION ABOUT THE CAUSE -->
@@ -293,13 +302,13 @@
 </div>
 
 
-
+    <div id="faq"></div>
     <!--- FAQ STYLE CARD FLIPPER SECTION --->
     <!-- https://codepen.io/cbolson/pen/MYgrjrm -->
     <section class="tile-full tile-theme-light" id="cards-background-section">
         <div class="cards-group">
 
-        <h1 class="section-title" id="faq">It doesn't have to be hard.</h1>
+        <h1 class="section-title">It doesn't have to be hard.</h1>
         <div class="cards">
             
             <input type="radio" id="radio-1" name="radio-card" checked>
@@ -581,7 +590,7 @@
     const darkSections = document.querySelectorAll('.tile-theme-dark');
 
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
+        if (window.scrollY > 80) { //Change this to have the island appear later or sooner when you start scrolling
             header.classList.add('island');
         } else {
             header.classList.remove('island');
