@@ -143,8 +143,8 @@
             <div id="main-header"><h1>GET YOUR TRASH TOGETHER</h1></div>
         </div>
         <div id="main-subheader">
-            <h2>Pick Up Club</h2>
-            <h3>A Shared Responsibility.</h3>
+            <h3>Pick Up Club</h3>
+            <h2>A Shared Responsibility.</h2>
             <a class="button-primary" href="https://www.google.com" target="_blank" title="Contact Us!" style="margin-right: 1rem;">JOIN THE CLUB</a>
             <a class="button-secondary" href="#faq">LEARN MORE</a>
         </div>
@@ -158,10 +158,12 @@
 
     <!-- RISKS! THE SMALL SECTION ABOUT THE CAUSE -->
     <section class="tile-half tile-theme-light">
-        <div><img href="assets/pic.jpg" width="90%" height="90%"></div>
+        <div class="impact-image-wrapper">
+            <img src="assets/pic.jpg" alt="Environmental impact" class="impact-image">
+        </div>
         <div id="impact-header">
             <h1>We need to stop...</h1>
-            <p>The increaced methane pollution.<br>The significant green house gas emissions.<br>The growing pressure on landfills.</p>
+            <p>The increased methane pollution.<br>The significant green house gas emissions.<br>The growing pressure on landfills.</p>
         </div>
     </section>
 
@@ -590,18 +592,53 @@
     
 </script>
 <script>
+    // Replace your existing scroll event listener with this corrected version
     const header = document.querySelector('.header');
     const darkSections = document.querySelectorAll('.tile-theme-dark');
 
+    let isIslandActive = false; 
+    let islandTimeout; 
+
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 80) { //Change this to have the island appear later or sooner when you start scrolling
-            header.classList.add('island');
+        
+        // entrance distance
+        if (window.scrollY > 550) { 
+            if (!isIslandActive || header.classList.contains('is-leaving')) {
+                clearTimeout(islandTimeout); 
+                header.classList.remove('is-leaving');
+                header.classList.add('island');
+                isIslandActive = true;
+            }
         } else {
-            header.classList.remove('island');
+            if (window.scrollY <= 50) {
+                clearTimeout(islandTimeout);
+                
+                header.classList.add('header-snap');
+                header.classList.remove('island', 'is-leaving');
+                isIslandActive = false;
+                
+                void header.offsetWidth;
+                
+                header.classList.remove('header-snap');
+            } 
+            else if (isIslandActive && !header.classList.contains('is-leaving')) {
+                header.classList.add('is-leaving');
+                
+                islandTimeout = setTimeout(() => {
+                    if (window.scrollY <= 200) { 
+                        header.classList.add('header-snap');
+                        header.classList.remove('island', 'is-leaving');
+                        isIslandActive = false;
+                        
+                        void header.offsetWidth;
+                        header.classList.remove('header-snap');
+                    }
+                }, 400);
+            }
         }
 
+        // 2. Dark Section Detection Logic (Unchanged)
         let isOverDarkSection = false;
-        
         const headerRect = header.getBoundingClientRect();
         const headerCentreY = headerRect.top + (headerRect.height / 2);
 

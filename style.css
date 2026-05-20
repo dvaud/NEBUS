@@ -26,6 +26,8 @@ I WILL PROBABLY REMEMBER MORE THINGS AS WE GO, I WILL UPDATE THIS LIST.
 
   --shadow-primary: rgb(from var(--primary-orange) r g b / 40%);
   --shadow-accent: rgb(from var(--accent-grey) r g b / 30%);
+  --glow: rgb(from var(--support-beige) r g b / 20%);
+
 
   --font-weight-interact: 700;
 
@@ -59,7 +61,7 @@ p {
 }
 
 
-h1 {
+h1, h2 {
   font-family: "Andada Pro", serif;
   font-optical-sizing: auto;
   font-style: normal;
@@ -67,7 +69,7 @@ h1 {
   font-weight: 500;
 }
 
-h2, h3, h4, h5 {
+h3, h4, h5 {
   font-family: "Mallanna", sans-serif;
   font-style: normal;
 }
@@ -165,7 +167,7 @@ html {
 
 .button-primary, .button-secondary {
   font-family: "Mallanna", sans-serif;
-  font-size: 1rem;
+  font-size: 1.5rem;
   letter-spacing: 0.1em;
   color: var(--support-beige);
   text-align: center;
@@ -176,6 +178,7 @@ html {
   border-radius: 16px;
   border: none;
   cursor: pointer;
+  margin-top: 3rem;
 }
 
 .button-primary {
@@ -282,12 +285,29 @@ html {
   padding-top: 100px;
 }
 
+/* Add to your style.css */
+.impact-image-wrapper {
+    width: 100%;
+    height: 100%;
+    padding: 2rem 0 2rem 2rem; 
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+
+.impact-image {
+    width: 90%;
+    height: 80%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
 /* -----------------------------------------------------------------------
    ---------------------------- NAVBAR -----------------------------------
    ----------------------------------------------------------------------- */
 
 .header {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
@@ -299,7 +319,14 @@ html {
   box-sizing: border-box;
   border-radius: 33.3333333333px;
   background-color: transparent;
-  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: background-color 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.header-snap,
+.header-snap *,
+.header-snap::before,
+.header-snap::after {
+    transition: none !important;
+    animation: none !important;
 }
 .header::before,
 .header::after {
@@ -430,9 +457,11 @@ html {
 
 
 .navbar-cta .button-primary {
+  font-size: 1.2rem;
   margin-bottom: 0;
+  margin-top: 0;
   background-color: var(--accent-grey);
-  box-shadow: 0.4rem 0.4rem 0.7rem var(--shadow-accent), -0.4rem -0.4rem 0.7rem var(--shadow-accent);
+  box-shadow: 0.4rem 0.4rem 0.7rem var(--glow), -0.4rem -0.4rem 0.7rem var(--glow);
   
   transition: box-shadow ease-in-out 0.3s, background-color ease-in-out 0.1s, letter-spacing ease-in-out 0.1s, transform ease-in-out 0.1s;
 }
@@ -454,11 +483,17 @@ html {
 
 
 .header.island {
-  top: 1.25rem;
+  position: fixed;
+  top: -5rem; 
+  opacity: 0; 
   width: calc(100% - 4rem);
   max-width: calc(1200px + 4rem);
   padding: 0rem 1.083rem;
   fill: var(--support-beige);
+  animation: islandIn 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.header.island.is-leaving {
+  animation: islandOut 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 .header.island::before {
   opacity: 1;
@@ -566,7 +601,26 @@ html {
   transform: scale(0.95);
 }
 
-
+@keyframes islandIn {
+  0% {
+    top: -5rem;
+    opacity: 0;
+  }
+  100% {
+    top: 1.25rem;
+    opacity: 1;
+  }
+}
+@keyframes islandOut {
+0% {
+    top: 1.25rem;
+    opacity: 1;
+  }
+  100% {
+    top: -5rem;
+    opacity: 0;
+  }
+}
 
 @keyframes shake {
   0% { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
