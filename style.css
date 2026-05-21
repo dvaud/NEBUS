@@ -243,6 +243,7 @@ html {
     grid-row: 1 / -1;
     display: flex;
     align-items: center;
+    justify-content: center;
     width: 100%;
     height: 100%;
     padding: 0 2rem 0 0; 
@@ -250,10 +251,15 @@ html {
 }
 
 .hero-image {
-    width: 100%;
-    height: 75%; 
-    object-fit: cover;
-    border-radius: 20px;
+  margin-bottom: 4rem;
+  width: 80%;
+  height: 75%;
+  object-fit: cover;
+  border-radius: 4rem;
+  mask-image: 
+    linear-gradient(to right, transparent, rgba(0,0,0,0.0) 2%, rgba(0,0,0,0.6) 3%, black 10%, black 90%, rgba(0,0,0,0.6) 97%, rgba(0,0,0,0.0) 98%, transparent),
+    linear-gradient(to bottom, transparent, rgba(0,0,0,0.0) 2%, rgba(0,0,0,0.6) 3%, black 10%, black 90%, rgba(0,0,0,0.6) 97%, rgba(0,0,0,0.0) 98%, transparent);
+  mask-composite: intersect;
 }
 #main-subheader {
   align-content: top;
@@ -314,7 +320,7 @@ html {
   width: 100%;
   max-width: 100%;
   margin-top: 0.87rem;
-  padding: 0 5rem;
+  padding: 0 3.15rem;
   z-index: 1000;
   box-sizing: border-box;
   border-radius: 33.3333333333px;
@@ -603,13 +609,15 @@ html {
 
 @keyframes islandIn {
   0% {
-    top: -5rem;
-    opacity: 0;
-  }
-  100% {
-    top: 1.25rem;
-    opacity: 1;
-  }
+      top: -5rem;
+      transform: translateX(-50%) scale(0.85);
+      opacity: 0;
+    }
+    100% {
+      top: 1.25rem;
+      transform: translateX(-50%) scale(1);
+      opacity: 1;
+    }
 }
 @keyframes islandOut {
 0% {
