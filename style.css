@@ -33,7 +33,7 @@ I WILL PROBABLY REMEMBER MORE THINGS AS WE GO, I WILL UPDATE THIS LIST.
   
     /* Effects & Shadows */
     --shadow-primary: rgb(from var(--primary-orange) r g b / 40%);
-    --shadow-accent: rgb(from var(--accent-grey) r g b / 30%);
+    --shadow-accent: rgb(from var(--accent-grey) r g b / 25%);
     --glow: rgb(from var(--support-beige) r g b / 20%);
   
     /* Typography & Animation */
@@ -57,6 +57,8 @@ body {
     font-weight: 100;
     font-style: normal;
     font-optical-sizing: auto;
+
+    overflow-x: hidden;
 }
 
 p {
@@ -185,13 +187,14 @@ h5 {
     transition: box-shadow ease-in-out 0.3s, background-color ease-in-out 0.1s, letter-spacing ease-in-out 0.1s, transform ease-in-out 0.1s;
 }
 
+
 .btn-primary {
     background-color: var(--primary-orange);
-    box-shadow: 0.4rem 0.4rem 0.7rem var(--shadow-primary), -0.4rem -0.4rem 0.7rem var(--shadow-primary);
+    box-shadow: 0.4rem 0.2rem 0.7rem var(--shadow-primary), -0.4rem -0.2rem 0.7rem var(--shadow-primary);
 }
 
 .btn-primary:hover {
-    box-shadow: 0.6rem 0.6rem 0.9rem var(--shadow-primary), -0.6rem -0.6rem 0.9rem var(--shadow-primary);
+    box-shadow: 0.6rem 0.3rem 0.9rem var(--shadow-primary), -0.6rem -0.3rem 0.9rem var(--shadow-primary);
 }
 
 .btn-primary:active {
@@ -200,12 +203,16 @@ h5 {
 }
 
 .btn-secondary {
-    background-color: var(--accent-grey);
-    box-shadow: 0.4rem 0.4rem 0.7rem var(--shadow-accent), -0.4rem -0.4rem 0.7rem var(--shadow-accent);
+    border: solid 1.7px var(--accent-grey);
+    color: var(--accent-grey);
+    box-shadow: 0.4rem 0.2rem 0.7rem var(--shadow-accent), -0.4rem -0.2rem 0.7rem var(--shadow-accent);
 }
 
 .btn-secondary:hover {
-    box-shadow: 0.6rem 0.6rem 0.9rem var(--shadow-accent), -0.6rem -0.6rem 0.9rem var(--shadow-accent);
+    background-color: var(--accent-grey);
+    color: var(--support-beige);
+    box-shadow: 0.6rem 0.3rem 0.9rem var(--shadow-accent), -0.6rem -0.3rem 0.9rem var(--shadow-accent);
+    transition: var(--transition);
 }
 
 .btn-secondary:active {
@@ -379,7 +386,12 @@ h5 {
     box-shadow: 0.6rem 0.6rem 0.9rem var(--shadow-primary), -0.6rem -0.6rem 0.9rem var(--shadow-primary);
 }
 
-/* Header Modifiers (Island State) */
+.navbar__cta .btn-primary:active {
+    transform: scale(0.95);
+    box-shadow: 0.1rem 0.1rem 0.3rem var(--shadow-primary), -0.1rem -0.1rem 0.3rem var(--shadow-primary);
+}
+
+/* Island modifiers */
 .header--island {
     position: fixed;
     top: -5rem;
@@ -427,9 +439,14 @@ h5 {
 }
 
 .header--island .btn-primary:hover {
-    background-color: var(--primary-orange);
-    color: var(--support-beige);
-    transition: var(--transition);
+  background-color: var(--primary-orange);
+  color: var(--support-beige);
+  box-shadow: 0.6rem 0.3rem 0.9rem var(--shadow-primary), -0.6rem -0.3rem 0.9rem var(--shadow-primary);
+}
+
+.header--island .btn-primary:active {
+  transform: scale(0.95);
+  box-shadow: 0.1rem 0.1rem 0.3rem var(--shadow-primary), -0.1rem -0.1rem 0.3rem var(--shadow-primary);
 }
 
 .header--island .navbar__brand a {
@@ -477,14 +494,107 @@ h5 {
     margin-bottom: 0;
     background-color: var(--accent-grey);
     color: var(--support-beige);
-    box-shadow: 0.4rem 0.4rem 0.7rem var(--shadow-accent), -0.4rem -0.4rem 0.7rem var(--shadow-accent);
+    box-shadow: 0.4rem 0.2rem 0.7rem var(--shadow-accent), -0.4rem -0.2rem 0.7rem var(--shadow-accent);
 }
 
 .header--island-light .btn-primary:hover {
-    background-color: var(--primary-orange);
-    color: var(--support-beige);
-    box-shadow: 0.6rem 0.6rem 0.9rem var(--shadow-primary), -0.6rem -0.6rem 0.9rem var(--shadow-primary);
+  background-color: var(--primary-orange);
+  color: var(--support-beige);
+  box-shadow: 0.6rem 0.3rem 0.9rem var(--shadow-primary), -0.6rem -0.3rem 0.9rem var(--shadow-primary);
 }
+
+.header--island-light .btn-primary:active {
+  transform: scale(0.95);
+  box-shadow: 0.1rem 0.1rem 0.3rem var(--shadow-primary), -0.1rem -0.1rem 0.3rem var(--shadow-primary);
+}
+
+/* --------------------------------------------------------------------------
+   ------------------------------ DROPDOWN MENU -----------------------------
+   -------------------------------------------------------------------------- */
+.dropdown {
+    position: static;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-content.mega-menu {
+    position: absolute;
+    top: calc(100% + 1.5rem);
+    left: 50%;
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    margin: 0;
+    list-style: none;
+    background-color: var(--accent-grey);
+    border-radius: 0;
+    box-shadow: 0 1rem 3rem var(--shadow-accent);
+    
+    width: 100vw;
+    max-width: none;
+    justify-content: center;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, -15px);
+    transition: opacity var(--transition) ease, transform var(--transition) ease, visibility var(--transition);
+}
+
+.dropdown:hover .dropdown-content.mega-menu,
+.dropdown:focus-within .dropdown-content.mega-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
+}
+
+.mega-card {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 340px;
+    background-color: rgba(240, 242, 229, 0.03);
+    border-radius: 16px;
+    text-decoration: none;
+    overflow: hidden;
+    transition: background-color var(--transition) ease, transform var(--transition) ease;
+}
+
+.mega-card:hover {
+    background-color: rgba(240, 242, 229, 0.08);
+    transform: translateY(-4px);
+}
+
+.mega-card__visual {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at center, rgba(242, 90, 23, 0.1) 0%, transparent 60%);
+}
+
+.mega-card__text {
+    padding: 1.5rem 2rem 2.5rem 2rem;
+    text-align: left;
+}
+
+.mega-card__text h4 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-family: "Andada Pro", serif;
+    font-weight: 500;
+    color: var(--support-beige);
+    transition: color var(--transition) ease;
+}
+
+.mega-card:hover .mega-card__text h4 {
+    color: var(--primary-orange);
+}
+
+.dropdown:hover .chevron,
+.dropdown:focus-within .chevron {
+    transform: rotate(180deg);
+}
+
 
 /* --------------------------------------------------------------------------
    ----------------------------6. HERO SECTION----------------------------
@@ -532,7 +642,7 @@ h5 {
     grid-row: 1 / -1;
     grid-column: 2;
     align-items: center;
-    justify-content: center;
+    justify-content: right;
     width: 100%;
     height: 100%;
     padding: 0 2rem 0 0;
@@ -540,8 +650,8 @@ h5 {
 }
 
 .hero-section__image {
-    width: 80%;
-    height: 75%;
+    width: 90%;
+    height: 65%;
     margin-bottom: 4rem;
     border-radius: 4rem;
     object-fit: cover;
@@ -579,49 +689,43 @@ h5 {
 /* --------------------------------------------------------------------------
    ----------------------------8. JOURNEY SECTION----------------------------
    -------------------------------------------------------------------------- */
+.scroll-track {
+    height: 300vh; 
+    width: 100%;
+    position: relative;
+}
+
+.sticky-viewport {
+    position: sticky;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
 .journey-wrapper {
     display: flex;
-    flex-direction: column;
-    width: 100%;
+    flex-direction: row;
+    width: 300vw; 
+    height: 100vh;
+    will-change: transform; 
 }
 
-.journey__overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    mix-blend-mode: difference;
-}
-
-.journey__overlay svg {
-    width: 80%;
-    height: 60%;
-    max-width: none;
-}
-
-.journey__overlay path {
-    stroke: var(--support-beige);
-    stroke-width: 3px;
-}
-
-.journey__text-top {
-    transform: translateY(9vh);
-}
-
-.journey__text-bottom {
-    transform: translateY(16.7vh);
-}
+/* --- Slide Content Layout --- */
 
 .journey-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: max-content 1fr 1fr;
     gap: 2rem;
     padding: 4rem;
+    width: 100vw; 
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+.span-full { 
+    grid-column: 1 / -1; 
 }
 
 .journey__col {
@@ -642,6 +746,29 @@ h5 {
     max-height: 40vh;
     border: 1px solid var(--support-beige);
     object-fit: cover;
+}
+
+.justify-centre {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.scroll-watcher {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 1rem;
+  width: 0;
+  z-index: 9999;
+  background-color: var(--primary-orange);
+  animation: scroll-watcher linear;
+  animation-timeline: scroll();
+  animation-duration: auto;
 }
 
 /* --------------------------------------------------------------------------
@@ -710,6 +837,8 @@ h5 {
 .review-card:hover {
     box-shadow: 0.2rem 0.2rem 0.4rem var(--shadow-accent);
 }
+
+
 
 /* --------------------------------------------------------------------------
    ------10. CARDS STACKING INTERACTION (CodePen Integration)----------------
@@ -920,11 +1049,11 @@ h5 {
    -------------------------------------------------------------------------- */
 @keyframes islandIn {
     0% { top: -5rem; transform: translateX(-50%) scale(0.85); opacity: 0; }
-    100% { top: 1.25rem; transform: translateX(-50%) scale(1); opacity: 1; }
+    100% { top: 0.3rem; transform: translateX(-50%) scale(1); opacity: 1; }
 }
 
 @keyframes islandOut {
-    0% { top: 1.25rem; opacity: 1; }
+    0% { top: 0.3rem; opacity: 1; }
     100% { top: -5rem; opacity: 0; }
 }
 
@@ -935,6 +1064,19 @@ h5 {
     8.33% { transform: translate(-50%, -50%) scale(1.05) rotate(5deg); }
     11.66% { transform: translate(-50%, -50%) scale(1.05) rotate(0deg); }
     16.66%, 100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+}
+
+@keyframes scroll-watcher {
+  to {
+    width: 100%;
+  }
+}
+
+@supports (animation-timeline: scroll()) {
+  .scroll-watcher {
+    animation-timeline: scroll();
+    animation-duration: auto;
+  }
 }
 
 @keyframes conveyorBelt {
@@ -953,4 +1095,25 @@ h5 {
 
 @keyframes revealImg {
     50% { translate: -150% 0; --angle: 0deg; }
+}
+
+@keyframes slide-and-fade {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .fade-in {
+      animation: slide-and-fade linear forwards;
+      animation-timeline: view();
+      animation-range: entry 0% entry 30vh;
+    }
+  }
 }
