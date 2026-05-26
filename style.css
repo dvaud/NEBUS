@@ -711,7 +711,7 @@ h5 {
     will-change: transform; 
 }
 
-/* --- Slide Content Layout --- */
+/* Slide content */
 
 .journey-section {
     display: grid;
@@ -759,16 +759,13 @@ h5 {
 }
 
 .scroll-watcher {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   left: 0;
   height: 1rem;
-  width: 0;
+  width: 0%;
   z-index: 9999;
   background-color: var(--primary-orange);
-  animation: scroll-watcher linear;
-  animation-timeline: scroll();
-  animation-duration: auto;
 }
 
 /* --------------------------------------------------------------------------
@@ -1066,17 +1063,15 @@ h5 {
     16.66%, 100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
 }
 
-@keyframes scroll-watcher {
-  to {
-    width: 100%;
-  }
-}
-
-@supports (animation-timeline: scroll()) {
-  .scroll-watcher {
-    animation-timeline: scroll();
-    animation-duration: auto;
-  }
+.scroll-watcher {
+  position: absolute; /* Changed from fixed */
+  bottom: 0;
+  left: 0;
+  height: 1rem;
+  width: 0%;
+  z-index: 9999;
+  background-color: var(--primary-orange);
+  /* Remove all animation and scroll-timeline properties */
 }
 
 @keyframes conveyorBelt {

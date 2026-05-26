@@ -126,6 +126,7 @@
     </section>
     
 <div class="scroll-track" id="journey-track">
+    <div class="scroll-watcher"></div>
         <div class="sticky-viewport">
             <div class="journey-wrapper" id="journey-wrapper">
                 
@@ -191,6 +192,7 @@
 
             </div>
         </div>
+        
     </div>
 
     <div id="faq"></div>
@@ -529,9 +531,10 @@
             }
         });
     </script>
-<script>
+    <script>
         const track = document.getElementById('journey-track');
         const wrapper = document.getElementById('journey-wrapper');
+        const watcher = document.getElementById('scroll-watcher');
 
         window.addEventListener('scroll', () => {
             const trackRect = track.getBoundingClientRect();
@@ -542,6 +545,8 @@
             
             const maxTranslate = wrapper.clientWidth - window.innerWidth;
             wrapper.style.transform = `translateX(${-progress * maxTranslate}px)`;
+            
+            watcher.style.width = `${progress * 100}%`;
         }, { passive: true });
     </script>
 </body>
