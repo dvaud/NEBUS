@@ -705,6 +705,8 @@ h5 {
     background-position: top center;
     background-size: cover;
     grid-template-rows: max-content 1fr max-content;
+    height: auto;
+    min-height: 90vh;
 }
 
 .finance1__text {
@@ -732,7 +734,7 @@ h5 {
     grid-column: 1 / -1;
     display: flex;
     justify-content: center;
-    padding-bottom: 3rem;
+    padding-bottom: 4rem;
 }
 
 
