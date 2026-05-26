@@ -709,24 +709,29 @@ h5 {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .journey-wrapper {
     display: flex;
     flex-direction: row;
     width: 300vw; 
-    height: 100vh;
-    will-change: transform; 
+    height: 90vh; 
+    will-change: transform;
 }
 
-/* --- Slide Content Layout --- */
-
+/* Slide content */
+.journey-section .section-title {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
 .journey-section {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: max-content 1fr 1fr;
+    grid-template-rows: max-content auto auto; 
     gap: 2rem;
-    padding: 4rem;
+    padding: 4rem 4rem 8rem 4rem; 
     width: 100vw; 
     height: 100vh;
     box-sizing: border-box;
@@ -767,18 +772,14 @@ h5 {
 .text-right {
     text-align: right;
 }
-
 .scroll-watcher {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  height: 1rem;
-  width: 0;
-  z-index: 9999;
-  background-color: var(--primary-orange);
-  animation: scroll-watcher linear;
-  animation-timeline: scroll();
-  animation-duration: auto;
+    position: absolute; 
+    bottom: 3rem;
+    left: 0;
+    height: 1rem;
+    width: 0%;
+    z-index: 9999;
+    background-color: var(--primary-orange);
 }
 
 /* --------------------------------------------------------------------------
@@ -1076,17 +1077,14 @@ h5 {
     16.66%, 100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
 }
 
-@keyframes scroll-watcher {
-  to {
-    width: 100%;
-  }
-}
-
-@supports (animation-timeline: scroll()) {
-  .scroll-watcher {
-    animation-timeline: scroll();
-    animation-duration: auto;
-  }
+.scroll-watcher {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1rem;
+  width: 0%;
+  z-index: 9999;
+  background-color: var(--primary-orange);
 }
 
 @keyframes conveyorBelt {
