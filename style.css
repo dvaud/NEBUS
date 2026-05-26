@@ -1115,6 +1115,94 @@ h5 {
     animation: revealImg calc(var(--transition) * 2) forwards;
 }
 
+
+/* --------------------------------------------------------------------------
+   ----------------------- RECYCLING HELP PAGE ----------------------------
+   -------------------------------------------------------------------------- */
+.help-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+    padding-top: 8rem;
+    background-image: url('assets/backdrop1.svg');
+    background-size: cover;
+    background-position: center top;
+    text-align: center;
+}
+
+.help-hero__title {
+    margin-bottom: 0.5rem;
+    font-size: 4rem;
+}
+
+.help-hero__subtitle {
+    margin-top: 0;
+}
+
+.infographics-section {
+    padding: 6rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 50vh;
+}
+
+.infographics-section__title {
+    margin-top: 0;
+    margin-bottom: 4rem;
+    color: var(--support-beige);
+}
+
+.infographics-grid {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.infographics-card {
+    background-color: var(--support-beige);
+    color: var(--accent-grey);
+    padding: 2rem;
+    border-radius: 16px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.infographics-card__img {
+    width: 100%;
+    height: 150px;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    object-fit: cover;
+}
+
+.infographics-card__title {
+    margin: 0 0 1rem 0;
+}
+
+.infographics-card__text {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    flex-grow: 1;
+}
+
+.infographics-card__btn {
+    margin-top: auto;
+    width: 80%;
+    box-sizing: border-box;
+}
+
+
+
 /* --------------------------------------------------------------------------
    ------------------------------11. ANIMATIONS------------------------------
    -------------------------------------------------------------------------- */
